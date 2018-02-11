@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import { Link, hashHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 import './ArticleList.css'
 
 class ArticleList extends Component {
   onClickDetailSelected(cell, row, rowIndex){
-    //<Link to={`/articles/${this.props.data.id}`} params={this.props.data}>React</Link>;
-     //window.location.assign(`/articles/${row.id}`, row);
      var data = JSON.stringify(row);
      hashHistory.push({pathname: `/articles/${row.id}`, query: {data}});
 

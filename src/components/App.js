@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import ArticleList from './ArticleList';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 
 class App extends Component {

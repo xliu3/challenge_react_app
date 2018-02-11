@@ -11,6 +11,10 @@ Install the bundle
 ```
 $ bundle install
 ```
+Create database
+```
+rails db:create
+```
 Build the database schema
 ```
 $ rails db:migrate
