@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { hashHistory } from 'react-router';
+import axios from 'axios';
 import './ArticleList.css'
 
 class ArticleList extends Component {
   onClickDetailSelected(cell, row, rowIndex){
      var data = JSON.stringify(row);
      hashHistory.push({pathname: `/articles/${row.id}`, query: {data}});
+
+  }
+
+  onClickEditSelected(cell, row, rowIndex){
+    var data = JSON.stringify(row);
+    hashHistory.push({pathname: `/edit/article/${row.id}`, query: {data}});
+  }
+
+  onClickDeleteSelected(cell, row, rowIndex){
+    axios.delete(`http://localhost:3000/api/v1/articles/${row.id}`)
+        .then(res => {
+            console.log(res)
+            console.log('it works')
+            window.location.reload();
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
 
   }
 
@@ -19,6 +39,20 @@ class ArticleList extends Component {
             this.onClickDetailSelected(cell, row, rowIndex)}
          >
          Detail
+         </button>
+         <button
+            type="button"
+            onClick={() =>
+            this.onClickEditSelected(cell, row, rowIndex)}
+         >
+         Edit
+         </button>
+         <button
+            type="button"
+            onClick={() =>
+            this.onClickDeleteSelected(cell, row, rowIndex)}
+         >
+         Delete
          </button>
        </div>
     )

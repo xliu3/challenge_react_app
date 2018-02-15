@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import ArticleList from './ArticleList';
+import { hashHistory } from 'react-router';
 
 
 class App extends Component {
@@ -32,6 +33,10 @@ class App extends Component {
         }
       )
   }
+
+  onClickCreateNew(){
+    hashHistory.push({pathname: `/new/article`, data: this.state.items});
+  }
   render() {
     return (
       <div className="App">
@@ -41,6 +46,7 @@ class App extends Component {
         <p className="App-intro">
           Articles Table.
         </p>
+        <button onClick={this.onClickCreateNew.bind(this)}>Create </button>
         <ArticleList key={this.state.items.id} data={this.state.items}/>
       </div>
 

@@ -22,6 +22,13 @@
   font-size: large;
 }
 
+.inline-label {
+  white-space: nowrap;
+  display: block;
+  width: 100px;
+  float: left;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
